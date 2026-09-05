@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import CtaSection from '../components/CtaSection.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { services } from '../data/services';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latestPosts = posts.slice(0, 3);
+---
+
+<Layout
+  title="Konsultan Data Analytics Indonesia"
+  description="Analyset membantu korporat menengah mengolah data menjadi keputusan bisnis — via machine learning, data analytics, automation & aplikasi. Konsultasi gratis."
+>
+  <!-- Hero -->
+  <section class="bg-neutral-light">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-neutral-dark">
+          Ubah Data Perusahaan Anda Menjadi Keputusan Bisnis yang Lebih Cerdas
+        </h1>
+        <p class="mt-6 text-base md:text-lg text-neutral-dark/70 leading-relaxed max-w-xl">
+          Analyset membantu korporat menengah mengolah data menjadi rekomendasi
+          bisnis nyata — melalui data analytics, machine learning, automation,
+          dan pengembangan aplikasi.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/contact/"
+            class="bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-primary-dark transition-colors"
+          >
+            Konsultasi Gratis
+          </a>
+          <a
+            href="/services/"
+            class="border-2 border-primary text-primary rounded-lg px-6 py-3 font-medium hover:bg-primary hover:text-white transition-colors"
+          >
+            Lihat Layanan
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden lg:block">
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-2">
+              <span class="h-3 w-3 rounded-full bg-primary"></span>
+              <span class="text-sm font-medium text-neutral-dark">Dashboard Analitik</span>
+            </div>
+            <span class="text-xs font-medium text-white bg-brand-gradient rounded-full px-3 py-1">
+              Real-time
+            </span>
+          </div>
+          <div class="flex items-end justify-between gap-3 h-40">
+            <div class="w-full bg-primary/15 rounded-t-lg h-16"></div>
+            <div class="w-full bg-primary/30 rounded-t-lg h-24"></div>
+            <div class="w-full bg-primary/45 rounded-t-lg h-20"></div>
+            <div class="w-full bg-brand-gradient rounded-t-lg h-32"></div>
+            <div class="w-full bg-primary/60 rounded-t-lg h-28"></div>
+            <div class="w-full bg-primary rounded-t-lg h-40"></div>
+          </div>
+          <div class="mt-6 grid grid-cols-3 gap-4">
+            <div class="rounded-lg bg-neutral-light p-4">
+              <p class="text-xs text-neutral-dark/60">Waktu dihemat</p>
+              <p class="mt-1 text-xl font-bold text-primary">100 jam</p>
+            </div>
+            <div class="rounded-lg bg-neutral-light p-4">
+              <p class="text-xs text-neutral-dark/60">Akurasi data</p>
+              <p class="mt-1 text-xl font-bold text-primary">99%</p>
+            </div>
+            <div class="rounded-lg bg-neutral-light p-4">
+              <p class="text-xs text-neutral-dark/60">Proses otomatis</p>
+              <p class="mt-1 text-xl font-bold text-primary">4+</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-semibold text-neutral-dark">
+          Layanan Kami
+        </h2>
+        <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
+          Empat lini layanan yang dirancang untuk membantu korporat menengah
+          mengoptimalkan data mereka.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {
+          services.map((service) => (
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
+              <div class="flex items-center justify-between">
+                <ServiceIcon id={service.id} class="h-10 w-10" />
+                <span class="text-primary">→</span>
+              </div>
+              <h3 class="mt-5 text-xl md:text-2xl font-semibold text-neutral-dark">
+                {service.title}
+              </h3>
+              <p class="mt-3 text-base text-neutral-dark/70 leading-relaxed">
+                {service.description}
+              </p>
+              <a
+                href={`/services/#${service.id}`}
+                class="mt-5 inline-block text-sm font-medium text-primary hover:text-primary-dark transition-colors"
+              >
+                Pelajari lebih lanjut →
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study Highlight -->
+  <section class="py-16 md:py-24 bg-neutral-light">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        <div class="bg-brand-gradient p-8 md:p-12 flex flex-col justify-center text-white">
+          <p class="text-sm font-medium uppercase tracking-wider text-white/80">
+            Studi Kasus
+          </p>
+          <p class="mt-4 text-4xl md:text-5xl font-bold leading-tight">
+            100 Jam Kerja/Minggu Dihemat
+          </p>
+          <p class="mt-4 text-white/85 leading-relaxed">
+            Kopi Kenangan — Automation Rekonsiliasi Keuangan
+          </p>
+        </div>
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-dark">
+            Kopi Kenangan
+          </h2>
+          <p class="mt-4 text-base md:text-lg text-neutral-dark/70 leading-relaxed">
+            Kami membantu Kopi Kenangan mengotomatisasi proses rekonsiliasi
+            keuangan, memangkas waktu kerja manual secara signifikan setiap
+            minggunya.
+          </p>
+          <a
+            href="/case-study/"
+            class="mt-6 inline-block text-primary font-medium hover:text-primary-dark transition-colors"
+          >
+            Baca Studi Kasus Lengkap →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Analyset -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-semibold text-neutral-dark leading-tight">
+          Spesialis Data untuk Akuntansi &amp; Keuangan
+        </h2>
+        <p class="mt-6 text-base md:text-lg text-neutral-dark/70 leading-relaxed">
+          Berbeda dengan konsultan data pada umumnya, Analyset fokus pada
+          kebutuhan spesifik korporat menengah di bidang akuntansi dan keuangan
+          — dari rekonsiliasi otomatis hingga model prediksi keuangan.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <p class="text-3xl font-bold text-primary">Akuntansi</p>
+          <p class="mt-2 text-sm text-neutral-dark/70">Spesialisasi utama kami</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <p class="text-3xl font-bold text-primary">Keuangan</p>
+          <p class="mt-2 text-sm text-neutral-dark/70">Akurasi &amp; efisiensi data</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <p class="text-3xl font-bold text-primary">Korporat</p>
+          <p class="mt-2 text-sm text-neutral-dark/70">Menengah sebagai fokus</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <p class="text-3xl font-bold text-primary">Data</p>
+          <p class="mt-2 text-sm text-neutral-dark/70">Pendekatan data-driven</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section class="py-16 md:py-24 bg-neutral-light">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold text-neutral-dark">
+            Insight &amp; Artikel
+          </h2>
+          <p class="mt-4 text-base md:text-lg text-neutral-dark/70 max-w-2xl">
+            Wawasan seputar data analytics, machine learning, automation, dan
+            akuntansi-keuangan untuk korporat menengah.
+          </p>
+        </div>
+        <a
+          href="/blog/"
+          class="text-primary font-medium hover:text-primary-dark transition-colors whitespace-nowrap"
+        >
+          Lihat semua artikel →
+        </a>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {
+          latestPosts.map((post) => (
+            <BlogCard
+              href={`/blog/${post.slug}/`}
+              title={post.data.title}
+              excerpt={post.data.description}
+              date={post.data.pubDate}
+              tags={post.data.tags}
+              image={post.data.image}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaSection title="Siap Mengoptimalkan Data Perusahaan Anda?" />
+</Layout>

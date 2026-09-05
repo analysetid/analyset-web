@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Hubungi Kami"
+  description="Hubungi Analyset untuk konsultasi data & analitik bisnis gratis. Kirim pesan via form kontak atau email halo@analyset.id untuk kebutuhan perusahaan Anda."
+>
+  <section class="bg-neutral-light py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-neutral-dark">
+          Hubungi Kami
+        </h1>
+        <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
+          Konsultasikan kebutuhan data dan analitik bisnis Anda dengan tim
+          Analyset — gratis, tanpa komitmen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2">
+        <!-- TODO: mekanisme submit form (backend/Formspree/Resend) perlu keputusan Arseno -->
+        <form id="contact-form" class="bg-white rounded-xl shadow-md p-6 md:p-8" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-neutral-dark mb-2">
+                Nama Lengkap
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+                placeholder="Nama Anda"
+                class="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none w-full"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-neutral-dark mb-2">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="email@perusahaan.com"
+                class="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none w-full"
+              />
+            </div>
+          </div>
+          <div class="mt-6">
+            <label for="company" class="block text-sm font-medium text-neutral-dark mb-2">
+              Nama Perusahaan
+            </label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+              placeholder="Nama perusahaan Anda"
+              class="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none w-full"
+            />
+          </div>
+          <div class="mt-6">
+            <label for="message" class="block text-sm font-medium text-neutral-dark mb-2">
+              Pesan / Kebutuhan Anda
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Ceritakan kebutuhan data & analitik bisnis Anda"
+              class="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none w-full resize-y"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="mt-6 bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-primary-dark transition-colors"
+          >
+            Kirim Pesan
+          </button>
+
+          <p id="form-error" class="hidden mt-4 text-sm text-red-600">
+            Mohon lengkapi semua kolom wajib dengan benar.
+          </p>
+        </form>
+
+        <div
+          id="form-success"
+          class="hidden bg-white rounded-xl shadow-md p-6 md:p-8 border border-gray-100"
+        >
+          <div class="flex items-start gap-4">
+            <div class="bg-primary/10 rounded-full p-3">
+              <svg
+                class="h-6 w-6 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-lg font-semibold text-neutral-dark">
+                Pesan terkirim
+              </h2>
+              <p class="mt-2 text-neutral-dark/70">
+                Terima kasih telah menghubungi Analyset. Tim kami akan merespons
+                pesan Anda secepatnya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <h2 class="text-lg font-semibold text-neutral-dark">Info Kontak</h2>
+          <ul class="mt-4 space-y-4 text-neutral-dark/70">
+            <!-- TODO: email kontak resmi perlu data dari Arseno -->
+            <li class="flex items-start gap-3">
+              <svg
+                class="h-5 w-5 text-primary shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16v12H4zM4 6l8 7 8-7"></path>
+              </svg>
+              <a href="mailto:halo@analyset.id" class="hover:text-primary transition-colors">
+                halo@analyset.id
+              </a>
+            </li>
+            <!-- TODO: nomor telepon/WhatsApp resmi perlu data dari Arseno -->
+            <li class="flex items-start gap-3">
+              <svg
+                class="h-5 w-5 text-primary shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 1a12 12 0 0 1-5-5l1-2-2-4-3 2z"></path>
+              </svg>
+              <span>+62 812-3456-7890</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-brand-gradient rounded-xl p-6 text-white">
+          <h2 class="text-lg font-semibold">Butuh bantuan lebih cepat?</h2>
+          <p class="mt-2 text-sm text-white/85">
+            Tim kami siap membantu mendiskusikan kebutuhan data &amp; analitik
+            bisnis Anda.
+          </p>
+          <a
+            href="mailto:halo@analyset.id"
+            class="mt-4 inline-block bg-white text-primary rounded-lg px-6 py-3 font-medium hover:bg-neutral-light transition-colors text-sm"
+          >
+            Kirim Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  const error = document.getElementById('form-error');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    error?.classList.add('hidden');
+
+    if (!form.checkValidity()) {
+      error?.classList.remove('hidden');
+      return;
+    }
+
+    form.classList.add('hidden');
+    success?.classList.remove('hidden');
+  });
+</script>

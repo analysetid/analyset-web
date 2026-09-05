@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import { services } from '../data/services';
+
+const [featured, ...rest] = services;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://analyset.id/' },
+    { '@type': 'ListItem', position: 2, name: 'Layanan', item: 'https://analyset.id/services/' },
+  ],
+};
+---
+
+<Layout
+  title="Layanan: Machine Learning & Data Analytics"
+  description="Jasa machine learning, implementasi data analytics, automation proses keuangan, dan pengembangan aplikasi untuk korporat menengah. Konsultasikan kebutuhan Anda."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <section class="bg-neutral-light py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-neutral-dark">
+          Layanan Kami
+        </h1>
+        <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
+          Empat lini layanan yang dirancang untuk membantu korporat menengah
+          mengoptimalkan data mereka.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-16">
+      <!-- Featured: Machine Learning -->
+      <div id={featured.id} class="bg-brand-gradient rounded-2xl p-8 md:p-12 text-white shadow-lg">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+          <div class="flex-1">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider bg-white/20 rounded-full px-4 py-1.5">
+              Layanan Andalan
+            </span>
+            <h2 class="mt-5 text-2xl md:text-3xl font-semibold leading-tight">
+              {featured.title}
+            </h2>
+            <p class="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
+              {featured.detail}
+            </p>
+          </div>
+          <div class="w-full lg:w-64 bg-white/10 rounded-xl p-6">
+            <ServiceIcon id={featured.id} class="h-12 w-12 text-white" />
+          </div>
+        </div>
+        <ul class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-3">
+          {featured.bullets.map((bullet) => (
+            <li class="flex items-start gap-3 text-white/95">
+              <svg
+                class="h-5 w-5 text-white shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Remaining services -->
+      {
+        rest.map((service) => (
+          <div
+            id={service.id}
+            class="bg-white rounded-xl shadow-md p-8 md:p-10 border border-gray-100"
+          >
+            <div class="flex items-start gap-5">
+              <ServiceIcon id={service.id} class="h-10 w-10 shrink-0" />
+              <div>
+                <h2 class="text-xl md:text-2xl font-semibold text-neutral-dark">
+                  {service.title}
+                </h2>
+                <p class="mt-3 text-base md:text-lg text-neutral-dark/70 leading-relaxed">
+                  {service.detail}
+                </p>
+              </div>
+            </div>
+            <ul class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+              {service.bullets.map((bullet) => (
+                <li class="flex items-start gap-3 text-neutral-dark/80">
+                  <svg
+                    class="h-5 w-5 text-primary shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaSection
+    title="Butuh solusi khusus untuk bisnis Anda? Konsultasikan kebutuhan Anda dengan tim kami."
+    buttonLabel="Konsultasi Gratis"
+  />
+</Layout>

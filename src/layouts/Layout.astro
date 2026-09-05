@@ -1,0 +1,80 @@
+---
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/montserrat/800.css';
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const siteUrl = Astro.site?.href ?? 'https://analyset.id';
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Analyset',
+  url: 'https://analyset.id',
+  logo: 'https://analyset.id/logos/analyset-logo.png',
+  description:
+    'Konsultan data analytics spesialis akuntansi & keuangan untuk korporat menengah.',
+  email: 'halo@analyset.id',
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Analyset</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={`${title} | Analyset`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl.replace(/\/$/, '')}${ogImage}`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Analyset" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Analyset`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl.replace(/\/$/, '')}${ogImage}`} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationSchema)}
+    />
+
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

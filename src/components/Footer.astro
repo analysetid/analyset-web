@@ -1,0 +1,99 @@
+---
+const serviceLinks = [
+  { label: 'Pembuatan Model Machine Learning', href: '/services/#machine-learning' },
+  { label: 'Implementasi Data Analytics', href: '/services/#data-analytics' },
+  { label: 'Automation', href: '/services/#automation' },
+  { label: 'Pengembangan Aplikasi', href: '/services/#app-development' },
+];
+
+const companyLinks = [
+  { label: 'Tentang Kami', href: '/about/' },
+  { label: 'Studi Kasus', href: '/case-study/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Hubungi Kami', href: '/contact/' },
+];
+---
+
+<footer class="bg-neutral-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+      <div>
+        <div class="bg-white rounded-lg p-3 inline-block">
+          <img
+            src="/logos/analyset-logo.png"
+            alt="Logo Analyset"
+            class="h-9 w-auto"
+          />
+        </div>
+        <p class="mt-5 text-sm text-white/70 leading-relaxed">
+          One-Stop Data Solution untuk Korporat Menengah
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-white/90 mb-5">
+          Layanan
+        </h2>
+        <ul class="space-y-3">
+          {
+            serviceLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-white/70 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-white/90 mb-5">
+          Perusahaan
+        </h2>
+        <ul class="space-y-3">
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-white/70 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-white/90 mb-5">
+          Kontak
+        </h2>
+        <ul class="space-y-3 text-sm text-white/70">
+          <!-- TODO: email kontak resmi perlu data dari Arseno -->
+          <li>
+            <a
+              href="mailto:halo@analyset.id"
+              class="hover:text-white transition-colors"
+            >
+              halo@analyset.id
+            </a>
+          </li>
+          <!-- TODO: nomor telepon/WhatsApp resmi perlu data dari Arseno -->
+          <li>+62 812-3456-7890</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10">
+      <p class="text-sm text-white/60">
+        © 2026 Analyset. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

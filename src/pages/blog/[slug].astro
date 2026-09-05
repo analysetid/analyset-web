@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = new Intl.DateTimeFormat('id-ID', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(post.data.pubDate);
+
+const siteUrl = 'https://analyset.id';
+const articleUrl = `${siteUrl}/blog/${post.slug}/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: { '@type': 'Organization', name: post.data.author },
+  image: `${siteUrl}${post.data.image ?? '/og-image.png'}`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog/` },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: articleUrl },
+  ],
+};
+
+const relatedPosts = (await getCollection('blog'))
+  .filter((p) => p.slug !== post.slug)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  ogImage={post.data.image ?? '/og-image.png'}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <article>
+    <header class="bg-neutral-light py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-4 md:px-8">
+        <div class="flex flex-wrap gap-2 mb-5">
+          {
+            post.data.tags.map((tag) => (
+              <span class="text-xs font-medium text-primary bg-primary/10 rounded-full px-3 py-1">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark leading-tight">
+          {post.data.title}
+        </h1>
+        <div class="mt-6 flex items-center gap-3 text-sm text-neutral-dark/60">
+          <span class="font-medium text-neutral-dark">{post.data.author}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+        </div>
+      </div>
+    </header>
+
+    <div class="py-12 md:py-16">
+      <div class="max-w-3xl mx-auto px-4 md:px-8">
+        <div class="article-content">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {
+    relatedPosts.length > 0 && (
+      <section class="pb-16 md:pb-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-dark">
+            Artikel Lainnya
+          </h2>
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {
+              relatedPosts.map((p) => (
+                <BlogCard
+                  href={`/blog/${p.slug}/`}
+                  title={p.data.title}
+                  excerpt={p.data.description}
+                  date={p.data.pubDate}
+                  tags={p.data.tags}
+                  image={p.data.image}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaSection
+    title="Ingin tahu lebih lanjut bagaimana kami bisa membantu bisnis Anda?"
+    buttonLabel="Hubungi Kami"
+  />
+</Layout>
