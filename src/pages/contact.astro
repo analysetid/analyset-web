@@ -6,10 +6,12 @@ import Layout from '../layouts/Layout.astro';
   title="Hubungi Kami"
   description="Hubungi Analyset untuk konsultasi data & analitik bisnis gratis. Kirim pesan via form kontak atau email halo@analyset.id untuk kebutuhan perusahaan Anda."
 >
-  <section class="bg-neutral-light py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
+  <section class="relative overflow-hidden bg-neutral-light py-16 md:py-24">
+    <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center max-w-2xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold text-neutral-dark">
+        <span class="mx-auto block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-neutral-dark">
           Hubungi Kami
         </h1>
         <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
@@ -24,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10">
       <div class="lg:col-span-2">
         <!-- TODO: mekanisme submit form (backend/Formspree/Resend) perlu keputusan Arseno -->
-        <form id="contact-form" class="bg-white rounded-xl shadow-md p-6 md:p-8" novalidate>
+        <form id="contact-form" class="bg-white rounded-2xl card-shadow border border-gray-100 p-6 md:p-8" novalidate>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="name" class="block text-sm font-medium text-neutral-dark mb-2">
@@ -83,7 +85,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <button
             type="submit"
-            class="mt-6 bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-primary-dark transition-colors"
+            class="mt-6 bg-brand-gradient text-white rounded-lg px-6 py-3 font-medium hover:glow-blue transition-all duration-300 shadow-lg shadow-primary/20"
           >
             Kirim Pesan
           </button>
@@ -95,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div
           id="form-success"
-          class="hidden bg-white rounded-xl shadow-md p-6 md:p-8 border border-gray-100"
+          class="hidden bg-white rounded-2xl card-shadow p-6 md:p-8 border border-gray-100"
         >
           <div class="flex items-start gap-4">
             <div class="bg-primary/10 rounded-full p-3">
@@ -126,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="space-y-6">
-        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+        <div class="bg-white rounded-2xl card-shadow p-6 border border-gray-100">
           <h2 class="text-lg font-semibold text-neutral-dark">Info Kontak</h2>
           <ul class="mt-4 space-y-4 text-neutral-dark/70">
             <!-- TODO: email kontak resmi perlu data dari Arseno -->
@@ -166,18 +168,21 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
 
-        <div class="bg-brand-gradient rounded-xl p-6 text-white">
-          <h2 class="text-lg font-semibold">Butuh bantuan lebih cepat?</h2>
-          <p class="mt-2 text-sm text-white/85">
-            Tim kami siap membantu mendiskusikan kebutuhan data &amp; analitik
-            bisnis Anda.
-          </p>
-          <a
-            href="mailto:halo@analyset.id"
-            class="mt-4 inline-block bg-white text-primary rounded-lg px-6 py-3 font-medium hover:bg-neutral-light transition-colors text-sm"
-          >
-            Kirim Email
-          </a>
+        <div class="relative overflow-hidden bg-brand-gradient rounded-2xl p-6 text-white glow-blue">
+          <div class="absolute inset-0 bg-grid-light opacity-40" aria-hidden="true"></div>
+          <div class="relative">
+            <h2 class="text-lg font-semibold">Butuh bantuan lebih cepat?</h2>
+            <p class="mt-2 text-sm text-white/85">
+              Tim kami siap membantu mendiskusikan kebutuhan data &amp; analitik
+              bisnis Anda.
+            </p>
+            <a
+              href="mailto:halo@analyset.id"
+              class="mt-4 inline-block bg-white text-primary rounded-lg px-6 py-3 font-medium hover:glow hover:-translate-y-0.5 transition-all duration-300 text-sm"
+            >
+              Kirim Email
+            </a>
+          </div>
         </div>
       </div>
     </div>

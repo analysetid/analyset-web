@@ -12,10 +12,12 @@ const posts = (await getCollection('blog')).sort(
   title="Insight & Artikel"
   description="Insight & artikel seputar data analytics, machine learning, automation, dan akuntansi-keuangan untuk korporat menengah. Baca wawasan terbaru tim Analyset."
 >
-  <section class="bg-neutral-light py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
+  <section class="relative overflow-hidden bg-neutral-light py-16 md:py-24">
+    <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center max-w-2xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold text-neutral-dark">
+        <span class="mx-auto block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-neutral-dark">
           Insight &amp; Artikel
         </h1>
         <p class="mt-4 text-base md:text-lg text-neutral-dark/70">

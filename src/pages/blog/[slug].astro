@@ -63,8 +63,9 @@ const relatedPosts = (await getCollection('blog'))
   </Fragment>
 
   <article>
-    <header class="bg-neutral-light py-16 md:py-20">
-      <div class="max-w-3xl mx-auto px-4 md:px-8">
+    <header class="relative overflow-hidden bg-neutral-light py-16 md:py-20">
+      <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+      <div class="relative max-w-3xl mx-auto px-4 md:px-8">
         <div class="flex flex-wrap gap-2 mb-5">
           {
             post.data.tags.map((tag) => (
@@ -98,7 +99,8 @@ const relatedPosts = (await getCollection('blog'))
     relatedPosts.length > 0 && (
       <section class="pb-16 md:pb-24">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-dark">
+          <span class="block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
+          <h2 class="mt-5 text-2xl md:text-3xl font-semibold text-neutral-dark">
             Artikel Lainnya
           </h2>
           <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
