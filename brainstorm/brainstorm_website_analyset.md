@@ -232,5 +232,34 @@ Supaya Hermes agent + OpenCode menghasilkan desain yang sesuai ekspektasi (bukan
 - Q: Domain dipakai untuk email juga? → A: Ya, pakai email @analyset. Ini penting: migrasi nameserver ke Cloudflare wajib backup dulu record MX/SPF/DKIM/DMARC sebelum pindah, verifikasi manual semua record email terbawa benar, baru pindah nameserver, lalu test kirim/terima email. Kalau ragu, alternatif lebih aman: tetap di nameserver Domainesia, cukup tambah CNAME untuk subdomain website saja (DNS email sama sekali tidak disentuh).
 - Q: Bagaimana kalau ada risiko downtime email saat migrasi? → A: **Arseno tidak masalah dengan downtime.** Keputusan final: pakai Opsi 1 (pindah nameserver penuh ke Cloudflare), bukan Opsi 2 (CNAME saja). Tetap disarankan ikuti langkah mitigasi (backup record, verifikasi, test) untuk minimalkan downtime, tapi ini bukan syarat mutlak.
 
+## 11. Progress Eksekusi — Dokumen PRD & Pendukung (2026-09-05)
+
+Brainstorm ini sudah dituangkan jadi dokumen kerja siap-eksekusi. Status: **brainstorming SELESAI untuk fase ini, sudah masuk fase dokumentasi/handoff ke agent eksekutor.**
+
+**Apa yang sudah dikerjakan:**
+1. Repo `analysetid/analyset-web` (akun GitHub `analysetid`, branch `main`) di-clone ke `Analyset/analyset-web/` lokal.
+2. File brainstorm ini di-copy ke `analyset-web/brainstorm/` dan sudah di-push ke repo.
+3. Repo remote sudah berisi kontribusi dari agent eksekusi server lain: `Memmory.md` (root, `Design/`, `brainstorm/`) — berisi aturan kerja utk agent eksekutor (baca parent Memmory dulu, hanya pakai Astro+HTML+Tailwind, wajib git pull sebelum kerja & git push sesudah kerja, model coding: `deepseek-v4-pro` via OpenCode), dan asset `Design/Brand Guideline.pdf` + `Design/Logo/*.png` (5 file logo) sudah tersedia di repo.
+4. Brand Guideline PDF diekstrak jadi data presisi: warna primary `#3069B4` (RGB 48,105,180), secondary `#2B4EA2` (RGB 43,78,162), neutral light `#FAFAFA`, neutral dark `#232323`; font **Montserrat**; logo bertema bar-chart gradient biru.
+5. Berdasarkan brainstorm ini + Brand Guideline + Logo, dibuat 7 dokumen kerja di `analyset-web/docs/` (sudah di-commit & push, commit `1b98585`):
+   - `PRD.md` — dokumen utama, brief final untuk agent eksekutor (tujuan, scope, requirements, constraints, open questions).
+   - `brand-tokens.md` — warna hex presisi, font, aturan pemakaian 5 file logo.
+   - `sitemap.md` — 6 halaman (Home, Services, Case Study, Blog, About, Contact) + breakdown section per halaman + struktur URL.
+   - `content-copy.md` — draft teks final tiap section (beberapa bagian ditandai `[DRAFT]`, perlu review Arseno).
+   - `design-system.md` — Tailwind config siap pakai (colors, font, komponen button/card/navbar/footer).
+   - `seo-spec.md` — target keyword awal, meta tags, schema.org, sitemap.xml/robots.txt, performa.
+   - `acceptance-criteria.md` — checklist QA per-halaman & global, termasuk checklist migrasi domain/email.
+
+**Gap yang masih butuh keputusan/data dari Arseno (belum di-input, jangan dikarang):**
+- Nomor telepon/WhatsApp & email kontak resmi Analyset (untuk halaman Contact).
+- **Izin publikasi nama klien "Kopi Kenangan" + angka 100 jam/minggu di halaman publik** — cek kontrak/NDA dulu, ini prioritas tinggi sebelum go-live.
+- Mekanisme teknis contact form (Cloudflare Pages Functions + email API vs Formspree/pihak ketiga lain).
+- Tool analytics: GA4 / Cloudflare Web Analytics / tanpa analytics dulu.
+- Apakah perlu staging/branch preview terpisah sebelum production.
+- Review isi `content-copy.md` yang ditandai `[DRAFT]` (terutama Hero headline & Why Analyset — dikarang berdasar brainstorm, belum kalimat resmi Arseno).
+- Apakah ada kantor fisik untuk ditampilkan, dan apakah section Tim/Founder ditampilkan di About.
+
+**Next step:** dokumen `docs/` sudah siap dipakai sebagai brief oleh Hermes agent eksekutor di server terpisah (delegasi ke OpenCode + DeepSeek). Fase berikutnya: agent eksekutor mulai build kerangka/struktur situs (Astro + Tailwind) mengikuti `sitemap.md`, lalu isi konten & styling sesuai `content-copy.md` + `design-system.md`.
+
 ---
-*Terakhir diupdate: awal sesi brainstorm dibuat.*
+*Terakhir diupdate: 2026-09-05 — PRD & dokumen pendukung selesai dibuat dan di-push ke repo `analysetid/analyset-web`.*
