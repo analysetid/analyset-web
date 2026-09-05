@@ -24,6 +24,7 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 3. Konflik aturan parent vs child → konfirmasi ke user aturan mana yang dipakai.
 4. Sebelum melakukan operasi apa pun, lakukan `git pull` terlebih dahulu.
 5. Setelah melakukan operasi, selalu lakukan `git push` ke server GitHub.
+6. Untuk tugas coding, gunakan **OpenCode** dengan model terbaik yang tersedia saat ini (sekarang: `deepseek-v4-pro`).
 
 ## Memori Percakapan Terakhir
 - [2026-09-05] Sync repo: masuk folder `Design/` (brand assets) & `brainstorm/` (rencana website) dari remote. Folder asset brand dinamai `Design` (bukan `brand`).
