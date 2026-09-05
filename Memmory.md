@@ -1,20 +1,22 @@
 # Analyset Web — Memmory
 
 ## Keterangan Isi Folder
-Web application untuk **Analyset** (perusahaan konsultan data science, spesialisasi akuntansi & keuangan). Repo ini masih tahap awal (belum ada kode aplikasi, baru file ini).
+Web application untuk **Analyset** (perusahaan konsultan data science, spesialisasi akuntansi & keuangan). Status: masih tahap brainstorming/rencana — belum ada build aplikasi.
 
-## Tech Stack
+## Tech Stack (rencana)
 - Astro
 - Tailwind CSS
 - HTML
+- Static site, hosting: Cloudflare Pages
 
 ## Repo
 - Remote: https://github.com/analysetid/analyset-web.git
 - Akun GitHub: analysetid
 - Branch: main
 
-## Setup
-(TODO: project Astro belum di-scaffold. Repo masih kosong, tinggal `Memmory.md`.)
+## Isi Folder
+- `Design/` — brand guideline & logo (lihat `Design/Memmory.md`)
+- `brainstorm/` — dokumen rencana website (lihat `brainstorm/Memmory.md`)
 
 ## Aturan / Instruksi yang Harus Diikuti
 1. Baca `Memmory.md` di folder root (`../Memmory.md`) sebelum mulai kerja.
@@ -22,4 +24,4 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 3. Konflik aturan parent vs child → konfirmasi ke user aturan mana yang dipakai.
 
 ## Memori Percakapan Terakhir
-- [2026-09-05] Konfirmasi tech stack: Astro + Tailwind + HTML. File `PROJECT.md` diubah (rename) menjadi `Memmory.md`.
+- [2026-09-05] Sync repo: masuk folder `Design/` (brand assets) & `brainstorm/` (rencana website) dari remote. Folder asset brand dinamai `Design` (bukan `brand`).
