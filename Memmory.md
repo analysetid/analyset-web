@@ -14,7 +14,7 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 - Remote: https://github.com/analysetid/analyset-web.git
 - Akun GitHub: analysetid
 - Branch: main
-- Domain: https://analyset.id (dikonfirmasi)
+- Domain: https://analyset.com (dikonfirmasi)
 - Email kontak: central@analyset.com
 - WhatsApp: +62 813-6363-754 → https://wa.me/6281363663754
 
@@ -34,4 +34,4 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 6. Untuk tugas coding, gunakan **OpenCode** dengan model terbaik yang tersedia saat ini (sekarang: `deepseek-v4-pro`).
 
 ## Memori Percakapan Terakhir
-- [2026-09-05] Website dibangun via OpenCode (deepseek-v4-pro): 6 halaman, 3 artikel blog, SEO lengkap. Desain di-upgrade 2x: (1) nuansa biru elegan, (2) futuristik space-navy + container bubble + glow cyan. Tombol WhatsApp floating + di Contact/Footer (wa.me/6281363663754). Kontak dikonfirmasi: domain analyset.id, email central@analyset.com, WA +62 813-6363-754. Gap tersisa: mekanisme submit form (backend) & izin publikasi "Kopi Kenangan".
+- [2026-09-05] Website dibangun via OpenCode (deepseek-v4-pro): 6 halaman, 3 artikel blog, SEO lengkap. Desain di-upgrade 2x: (1) nuansa biru elegan, (2) futuristik space-navy + container bubble + glow cyan. Tombol WhatsApp floating + di Contact/Footer (wa.me/6281363663754). Kontak dikonfirmasi: domain analyset.com, email central@analyset.com, WA +62 813-6363-754. Gap tersisa: mekanisme submit form (backend) & izin publikasi "Kopi Kenangan".

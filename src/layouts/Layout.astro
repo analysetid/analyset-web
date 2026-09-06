@@ -22,15 +22,15 @@ const {
   ogImage = '/og-image.png',
 } = Astro.props;
 
-const siteUrl = Astro.site?.href ?? 'https://analyset.id';
+const siteUrl = Astro.site?.href ?? 'https://analyset.com';
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Analyset',
-  url: 'https://analyset.id',
-  logo: 'https://analyset.id/logos/analyset-logo.png',
+  url: 'https://analyset.com',
+  logo: 'https://analyset.com/logos/analyset-logo.png',
   description:
     'Konsultan data analytics spesialis akuntansi & keuangan untuk korporat menengah.',
   email: 'central@analyset.com',

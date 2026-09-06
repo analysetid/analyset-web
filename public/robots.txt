@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://analyset.id/sitemap-index.xml
+Sitemap: https://analyset.com/sitemap-index.xml

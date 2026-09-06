@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://analyset.id',
+  site: 'https://analyset.com',
   integrations: [
     tailwind(),
     sitemap(),
