@@ -2,9 +2,14 @@
 interface Props {
   id: string;
   class?: string;
+  variant?: 'gradient' | 'solid';
 }
 
-const { id, class: className = 'h-8 w-8 text-primary' } = Astro.props;
+const {
+  id,
+  class: className = 'h-8 w-8',
+  variant = 'gradient',
+} = Astro.props;
 
 const paths: Record<string, string> = {
   'machine-learning':
@@ -16,17 +21,29 @@ const paths: Record<string, string> = {
   'app-development':
     'M8 4h8a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1ZM12 18h.01',
 };
+
+const gradientId = `sg-${id}`;
 ---
 
 <svg
   class:list={[className]}
   fill="none"
-  stroke="currentColor"
+  stroke={variant === 'gradient' ? `url(#${gradientId})` : 'currentColor'}
   viewBox="0 0 24 24"
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
   aria-hidden="true"
 >
+  {
+    variant === 'gradient' && (
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#22D3EE" />
+          <stop offset="100%" stop-color="#3069B4" />
+        </linearGradient>
+      </defs>
+    )
+  }
   <path d={paths[id]}></path>
 </svg>

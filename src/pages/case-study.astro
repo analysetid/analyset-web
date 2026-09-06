@@ -20,15 +20,19 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
-  <section class="relative overflow-hidden bg-neutral-light py-16 md:py-24">
-    <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+  <section class="relative overflow-hidden bg-gradient-to-b from-space-950 to-space-900 py-16 md:py-24">
+    <div class="absolute inset-0 bg-starfield opacity-60" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-grid-space opacity-60" aria-hidden="true"></div>
     <div class="relative max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center max-w-2xl mx-auto">
-        <span class="mx-auto block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
-        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-neutral-dark">
+        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true"></span>
+          Studi Kasus
+        </span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-white">
           Studi Kasus
         </h1>
-        <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
+        <p class="mt-4 text-base md:text-lg text-white/70">
           Bukti nyata bagaimana Analyset membantu bisnis mengoptimalkan proses
           melalui data.
         </p>
@@ -37,47 +41,47 @@ const breadcrumbSchema = {
   </section>
 
   <!-- Kopi Kenangan Case Study -->
-  <section class="py-16 md:py-24">
+  <section class="py-16 md:py-24 bg-space-950">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <!-- TODO: izin publikasi nama & angka "Kopi Kenangan" perlu konfirmasi Arseno sebelum go-live -->
-      <div class="bg-white rounded-3xl card-shadow border border-gray-100 p-8 md:p-12">
-        <div class="border-b border-gray-100 pb-8 mb-10">
-          <span class="text-xs font-semibold uppercase tracking-wider text-primary">
+      <div class="rounded-[2rem] glass-strong glow-cyan p-8 md:p-12">
+        <div class="border-b border-cyan-400/15 pb-8 mb-10">
+          <span class="text-xs font-semibold uppercase tracking-widest text-cyan-300">
             Flagship Case Study
           </span>
-          <h2 class="mt-3 text-2xl md:text-3xl font-semibold text-neutral-dark">
+          <h2 class="mt-3 text-2xl md:text-3xl font-semibold text-white">
             Kopi Kenangan — Automation Rekonsiliasi Keuangan
           </h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          <div class="group relative bg-neutral-light rounded-2xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 overflow-hidden">
-            <span class="absolute inset-x-0 top-0 h-1 bg-brand-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold">1</span>
-            <h3 class="mt-4 text-lg font-semibold text-neutral-dark">Problem</h3>
-            <p class="mt-3 text-neutral-dark/70 leading-relaxed">
+          <div class="group relative rounded-[1.5rem] glass p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:glow-cyan overflow-hidden">
+            <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan-gradient text-white font-bold glow-cyan-soft">1</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">Problem</h3>
+            <p class="mt-3 text-white/70 leading-relaxed">
               Kopi Kenangan menghadapi tantangan proses rekonsiliasi keuangan
               manual yang memakan waktu tim finance secara signifikan setiap
               minggunya, meningkatkan risiko human error dan menghambat
               efisiensi operasional.
             </p>
           </div>
-          <div class="group relative bg-neutral-light rounded-2xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 overflow-hidden">
-            <span class="absolute inset-x-0 top-0 h-1 bg-brand-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold">2</span>
-            <h3 class="mt-4 text-lg font-semibold text-neutral-dark">Solution</h3>
-            <p class="mt-3 text-neutral-dark/70 leading-relaxed">
+          <div class="group relative rounded-[1.5rem] glass p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:glow-cyan overflow-hidden">
+            <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan-gradient text-white font-bold glow-cyan-soft">2</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">Solution</h3>
+            <p class="mt-3 text-white/70 leading-relaxed">
               Analyset merancang dan mengimplementasikan sistem automation
               rekonsiliasi yang mengotomatisasi proses pencocokan data
               transaksi, menggantikan pekerjaan manual berulang dengan alur
               kerja otomatis.
             </p>
           </div>
-          <div class="group relative bg-neutral-light rounded-2xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 overflow-hidden">
-            <span class="absolute inset-x-0 top-0 h-1 bg-brand-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold">3</span>
-            <h3 class="mt-4 text-lg font-semibold text-neutral-dark">Result</h3>
-            <p class="mt-3 text-neutral-dark/70 leading-relaxed">
+          <div class="group relative rounded-[1.5rem] glass p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:glow-cyan overflow-hidden">
+            <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan-gradient text-white font-bold glow-cyan-soft">3</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">Result</h3>
+            <p class="mt-3 text-white/70 leading-relaxed">
               Implementasi automation ini berhasil menghemat waktu kerja tim
               finance Kopi Kenangan — waktu yang sebelumnya dihabiskan untuk
               rekonsiliasi manual kini dapat dialokasikan untuk pekerjaan yang
@@ -86,17 +90,18 @@ const breadcrumbSchema = {
           </div>
         </div>
 
-        <div class="relative overflow-hidden mt-10 bg-brand-gradient rounded-2xl p-8 md:p-12 text-white text-center glow-blue">
-          <div class="absolute inset-0 bg-grid-light opacity-40" aria-hidden="true"></div>
-          <div class="absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true"></div>
+        <div class="relative overflow-hidden mt-10 rounded-[1.5rem] glass-strong p-8 md:p-12 text-white text-center glow-cyan">
+          <div class="absolute inset-0 bg-cyan-gradient opacity-15" aria-hidden="true"></div>
+          <div class="absolute inset-0 bg-starfield opacity-50" aria-hidden="true"></div>
+          <div class="absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-cyan-400/15 blur-3xl" aria-hidden="true"></div>
           <div class="relative">
-            <p class="text-sm font-medium uppercase tracking-wider text-white/80">
+            <p class="text-sm font-medium uppercase tracking-widest text-cyan-300">
               Hasil Terukur
             </p>
-            <p class="mt-3 text-5xl md:text-6xl font-bold leading-none text-white">
+            <p class="mt-3 text-5xl md:text-6xl font-bold leading-none text-gradient-cyan text-glow">
               100 Jam
             </p>
-            <p class="mt-3 text-lg md:text-xl font-medium text-white/90">
+            <p class="mt-3 text-lg md:text-xl font-medium text-white/85">
               kerja per minggu dihemat
             </p>
           </div>

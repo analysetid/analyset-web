@@ -12,15 +12,19 @@ const posts = (await getCollection('blog')).sort(
   title="Insight & Artikel"
   description="Insight & artikel seputar data analytics, machine learning, automation, dan akuntansi-keuangan untuk korporat menengah. Baca wawasan terbaru tim Analyset."
 >
-  <section class="relative overflow-hidden bg-neutral-light py-16 md:py-24">
-    <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+  <section class="relative overflow-hidden bg-gradient-to-b from-space-950 to-space-900 py-16 md:py-24">
+    <div class="absolute inset-0 bg-starfield opacity-60" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-grid-space opacity-60" aria-hidden="true"></div>
     <div class="relative max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center max-w-2xl mx-auto">
-        <span class="mx-auto block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
-        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-neutral-dark">
+        <span class="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true"></span>
+          Blog
+        </span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-white">
           Insight &amp; Artikel
         </h1>
-        <p class="mt-4 text-base md:text-lg text-neutral-dark/70">
+        <p class="mt-4 text-base md:text-lg text-white/70">
           Wawasan seputar data analytics, machine learning, automation, dan
           akuntansi-keuangan untuk korporat menengah.
         </p>
@@ -28,7 +32,7 @@ const posts = (await getCollection('blog')).sort(
     </div>
   </section>
 
-  <section class="py-16 md:py-24">
+  <section class="py-16 md:py-24 bg-space-950">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {
