@@ -18,6 +18,14 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 - Email kontak: central@analyset.com
 - WhatsApp: +62 813-6363-754 → https://wa.me/6281363663754
 
+## Deploy (Cloudflare Pages)
+- URL produksi: https://analyset.pages.dev
+- Project: `analyset` (direct upload, bukan git integration)
+- Deploy command: `wrangler pages deploy dist --project-name analyset`
+- Cloudflare Account ID: 25855b63b9daf7c14203a15c76d65844
+- Token: CLOUDFLARE_API_TOKEN di /opt/data/.env
+- Domain custom `analyset.com` BELUM dipasang (butuh tambah zone + ganti nameserver di Domainesia)
+
 ## Isi Folder
 - `src/` — source code (pages, layouts, components, content, data, styles)
 - `public/` — asset statis (logo, favicon, og-image, robots.txt)
