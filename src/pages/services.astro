@@ -24,7 +24,7 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
-  <section class="relative overflow-hidden bg-gradient-to-b from-space-950 to-space-900 py-16 md:py-24">
+  <section class="relative overflow-hidden bg-gradient-to-b from-space-950 to-space-900 py-10 md:py-14">
     <div class="absolute inset-0 bg-starfield opacity-60" aria-hidden="true"></div>
     <div class="absolute inset-0 bg-grid-space opacity-60" aria-hidden="true"></div>
     <div class="relative max-w-7xl mx-auto px-4 md:px-8">
@@ -33,10 +33,10 @@ const breadcrumbSchema = {
           <span class="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden="true"></span>
           Layanan
         </span>
-        <h1 class="mt-5 text-4xl md:text-5xl font-bold text-white">
+        <h1 class="mt-4 text-4xl md:text-5xl font-bold text-white">
           Layanan Kami
         </h1>
-        <p class="mt-4 text-base md:text-lg text-white/70">
+        <p class="mt-3 text-base md:text-lg text-white/70">
           Empat lini layanan yang dirancang untuk membantu korporat menengah
           mengoptimalkan data mereka.
         </p>
@@ -44,30 +44,30 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="py-16 md:py-24 bg-space-950">
-    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-16">
+  <section class="py-12 md:py-16 bg-space-950">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-8">
       <!-- Featured: Machine Learning -->
-      <div id={featured.id} class="relative overflow-hidden rounded-[2rem] glass-strong glow-cyan p-8 md:p-12 text-white">
+      <div id={featured.id} class="relative overflow-hidden rounded-[2rem] glass-strong glow-cyan p-6 md:p-10 text-white">
         <div class="absolute inset-0 bg-cyan-gradient opacity-10" aria-hidden="true"></div>
         <div class="absolute inset-0 bg-grid-light opacity-30" aria-hidden="true"></div>
         <div class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-cyan-400/15 blur-3xl" aria-hidden="true"></div>
-        <div class="relative flex flex-col lg:flex-row gap-8 items-start">
+        <div class="relative flex flex-col lg:flex-row gap-6 items-start">
           <div class="flex-1">
             <span class="inline-block text-xs font-semibold uppercase tracking-widest bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 rounded-full px-4 py-1.5">
               Layanan Andalan
             </span>
-            <h2 class="mt-5 text-2xl md:text-3xl font-semibold leading-tight">
+            <h2 class="mt-4 text-2xl md:text-3xl font-semibold leading-tight">
               {featured.title}
             </h2>
-            <p class="mt-4 text-base md:text-lg text-white/80 leading-relaxed">
+            <p class="mt-3 text-base md:text-lg text-white/80 leading-relaxed">
               {featured.detail}
             </p>
           </div>
-          <div class="w-full lg:w-64 rounded-2xl glass p-6">
+          <div class="w-full lg:w-64 rounded-2xl glass p-5">
             <ServiceIcon id={featured.id} class="h-12 w-12 text-white" variant="solid" />
           </div>
         </div>
-        <ul class="relative mt-8 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ul class="relative mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
           {featured.bullets.map((bullet) => (
             <li class="flex items-start gap-3 text-white/90">
               <svg
@@ -93,7 +93,7 @@ const breadcrumbSchema = {
         rest.map((service) => (
           <div
             id={service.id}
-            class="group relative rounded-[1.5rem] glass p-8 md:p-10 transition-all duration-300 hover:border-cyan-400/40 hover:glow-cyan overflow-hidden"
+            class="group relative rounded-[1.5rem] glass p-6 md:p-8 transition-all duration-300 hover:border-cyan-400/40 hover:glow-cyan overflow-hidden"
           >
             <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
             <div class="flex items-start gap-5">
@@ -109,7 +109,7 @@ const breadcrumbSchema = {
                 </p>
               </div>
             </div>
-            <ul class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <ul class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
               {service.bullets.map((bullet) => (
                 <li class="flex items-start gap-3 text-white/75">
                   <svg
