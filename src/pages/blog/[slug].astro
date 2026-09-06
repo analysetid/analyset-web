@@ -63,31 +63,30 @@ const relatedPosts = (await getCollection('blog'))
   </Fragment>
 
   <article>
-    <header class="relative overflow-hidden bg-gradient-to-b from-space-950 to-space-900 py-12 md:py-16">
-      <div class="absolute inset-0 bg-starfield opacity-60" aria-hidden="true"></div>
-      <div class="absolute inset-0 bg-grid-space opacity-60" aria-hidden="true"></div>
+    <header class="relative overflow-hidden bg-gradient-to-b from-sky-50 to-white py-12 md:py-16">
+      <div class="absolute inset-0 bg-dots" aria-hidden="true"></div>
       <div class="relative max-w-3xl mx-auto px-4 md:px-8">
         <div class="flex flex-wrap gap-2 mb-4">
           {
             post.data.tags.map((tag) => (
-              <span class="text-xs font-medium text-cyan-300 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-3 py-1">
+              <span class="text-xs font-medium text-primary bg-sky-50 border border-sky-200 rounded-full px-3 py-1">
                 {tag}
               </span>
             ))
           }
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark leading-tight">
           {post.data.title}
         </h1>
-        <div class="mt-5 flex items-center gap-3 text-sm text-white/60">
-          <span class="font-medium text-white/80">{post.data.author}</span>
+        <div class="mt-5 flex items-center gap-3 text-sm text-gray-500">
+          <span class="font-medium text-neutral-dark">{post.data.author}</span>
           <span aria-hidden="true">·</span>
           <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
         </div>
       </div>
     </header>
 
-    <div class="py-10 md:py-12 bg-space-950">
+    <div class="py-10 md:py-12 bg-white">
       <div class="max-w-3xl mx-auto px-4 md:px-8">
         <div class="article-content">
           <Content />
@@ -98,10 +97,10 @@ const relatedPosts = (await getCollection('blog'))
 
   {
     relatedPosts.length > 0 && (
-      <section class="pb-12 md:pb-16 bg-space-900">
+      <section class="pb-12 md:pb-16 bg-sky-50">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
-          <span class="block h-1 w-16 rounded-full bg-cyan-gradient" aria-hidden="true"></span>
-          <h2 class="mt-4 text-2xl md:text-3xl font-semibold text-white">
+          <span class="block h-1 w-16 rounded-full bg-brand-gradient" aria-hidden="true"></span>
+          <h2 class="mt-4 text-2xl md:text-3xl font-semibold text-neutral-dark">
             Artikel Lainnya
           </h2>
           <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
