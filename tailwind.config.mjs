@@ -17,6 +17,10 @@ export default {
           900: '#071426',
           800: '#0B1F3A',
         },
+        whatsapp: {
+          DEFAULT: '#25D366',
+          dark: '#1EBE5D',
+        },
       },
       fontFamily: {
         sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
