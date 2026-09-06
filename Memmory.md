@@ -40,6 +40,7 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 4. Sebelum melakukan operasi apa pun, lakukan `git pull` terlebih dahulu.
 5. Setelah melakukan operasi, selalu lakukan `git push` ke server GitHub.
 6. Untuk tugas coding, gunakan **OpenCode** dengan model terbaik yang tersedia saat ini (sekarang: `deepseek-v4-pro`).
+7. **WAJIB kerja di branch `development`, JANGAN push langsung ke `main`.** Cloudflare Pages project `analyset` auto-deploy ke production HANYA dari branch `main`. Branch `development` otomatis dapat preview URL terpisah (aman, tidak menyentuh situs live). Alur: commit & push ke `development` → user/Arseno review preview URL → kalau OK, merge `development` ke `main` → baru production ter-redeploy otomatis.
 
 ## Memori Percakapan Terakhir
 - [2026-09-05] Website dibangun via OpenCode (deepseek-v4-pro): 6 halaman, 3 artikel blog, SEO lengkap. Desain di-upgrade 2x: (1) nuansa biru elegan, (2) futuristik space-navy + container bubble + glow cyan. Tombol WhatsApp floating + di Contact/Footer (wa.me/6281363663754). Kontak dikonfirmasi: domain analyset.com, email central@analyset.com, WA +62 813-6363-754. Gap tersisa: mekanisme submit form (backend) & izin publikasi "Kopi Kenangan".
