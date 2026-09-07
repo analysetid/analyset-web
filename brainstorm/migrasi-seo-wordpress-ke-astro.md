@@ -83,5 +83,16 @@ Karena domain sudah di Cloudflare, pakai **Cloudflare Redirect Rules** (gratis, 
 
 ### Langkah Selanjutnya (setelah propagasi DNS Cloudflare selesai — dipantau cron job `cb47db1a1334`)
 1. Request Indexing via `gsc_api.py inspect` lalu request index untuk: `/`, `/services`, `/about`, `/contact`, `/case-study`, `/blog`, + 3 artikel blog individual.
-2. Setup Cloudflare Redirect Rules untuk 13 mapping URL (lihat Section 1).
+2. ~~Setup Cloudflare Redirect Rules untuk 13 mapping URL~~ — **SELESAI 2026-09-07**, lihat Section 7.
 3. Pantau ulang status index beberapa hari kemudian.
+
+## 7. Deploy Redirect 301 — SELESAI (2026-09-07)
+- File `public/_redirects` (format Cloudflare Pages) berisi 13 rule 301, dibuat & di-push ke `development` lalu merged ke `main`.
+- Build `npm run build` dikonfirmasi meng-copy `_redirects` otomatis ke `dist/_redirects` (perilaku standar Astro untuk isi `public/`).
+- Deploy manual dijalankan: `npx wrangler pages deploy dist --project-name analyset` — sukses.
+  - Deployment URL: `https://7079974c.analyset.pages.dev`
+  - Alias: `https://development.analyset.pages.dev`
+- **Redirect tervalidasi langsung** dengan `curl -I`:
+  - `/home/` → 301 → `/` ✅
+  - `/shop/` → 301 → `/services` ✅
+- Redirect ini otomatis berlaku juga di domain production `analyset.com` begitu propagasi DNS selesai — tidak perlu deploy ulang saat itu terjadi.
