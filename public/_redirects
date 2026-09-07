@@ -1,0 +1,14 @@
+# Redirect 301 — URL WordPress lama → situs Astro baru (migrasi SEO)
+/home/  /  301
+/about/  /about  301
+/contact  /contact  301
+/insight/  /blog  301
+/articles/  /blog  301
+/shop/  /services  301
+/product-category/analyset-mab/  /services  301
+/product/accurate-analytics/  /services  301
+/author/krisanputih/  /blog  301
+/under_construction-analyset/  /  301
+/study-case-analyset/  /case-study  301
+/demo-analyset-tools/  /services  301
+/2025/07/06/data-warehouse-vs-database-biasa-perbedaan-fungsi-dan-kapan-harus-menggunakannya/  /blog  301
