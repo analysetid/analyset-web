@@ -10,24 +10,28 @@ Dibuat: 2026-09-06
 
 ## 1. Mapping Redirect 301 (URL Lama → URL Baru)
 
-Ditemukan dari pencarian `site:analyset.com` (Google index saat ini):
+Ditemukan dari 2 sumber independen: Google Index (`site:analyset.com`, berbagai variasi query) dan Wayback Machine CDX API (histori crawl domain). Total 14 URL unik ditemukan.
 
 | URL Lama (WordPress) | Redirect ke (Astro) | Alasan |
 |---|---|---|
 | `/home/` | `/` | Duplikat homepage |
+| `/about/` | `/about` | Padanan langsung sudah ada |
+| `/contact` | `/contact` | Padanan langsung sudah ada |
 | `/insight/` | `/blog` | Halaman listing artikel lama → blog baru |
 | `/articles/` | `/blog` | Halaman listing artikel lama → blog baru |
 | `/shop/` | `/services` | Tidak ada e-commerce lagi di situs baru; diarahkan ke halaman layanan terdekat |
 | `/product-category/analyset-mab/` | `/services` | Kategori produk lama → layanan terdekat |
+| `/product/accurate-analytics/` | `/services` | Halaman produk individual lama → layanan terdekat |
 | `/author/krisanputih/` | `/blog` | Situs baru tidak pakai sistem author individual |
 | `/under_construction-analyset/` | `/` | Halaman placeholder lama, tidak relevan lagi |
 | `/study-case-analyset/` | `/case-study` | Padanan langsung ditemukan di situs baru |
 | `/demo-analyset-tools/` | `/services` | Tidak ada demo tools lagi; arahkan ke layanan |
+| `/2025/07/06/data-warehouse-vs-database-biasa-perbedaan-fungsi-dan-kapan-harus-menggunakannya/` | `/blog` | Artikel blog individual lama, tidak ada padanan konten spesifik di situs baru |
 
-**Catatan penting:** Daftar di atas didasarkan pada 10 hasil teratas index Google saat ini (`site:analyset.com`), BUKAN daftar lengkap seluruh URL yang pernah ada di WordPress. Kemungkinan ada URL lain (kategori, tag, artikel individual lama) yang belum terdeteksi lewat pencarian ini.
+**Catatan penting:** Daftar di atas adalah hasil terbaik dari 2 sumber independen (Google index + Wayback Machine), BUKAN jaminan 100% lengkap. Wayback Machine sempat mengalami downtime saat pengecekan (2026-09-07), dan snapshot sitemap WordPress (`wp-sitemap-posts-post-1.xml`) yang berhasil diambil ternyata dari 2023 (berisi hanya "hello-world" default) — bukan snapshot terbaru sebelum migrasi. Kemungkinan masih ada artikel blog lain yang belum tertangkap oleh kedua sumber ini.
 
 **REKOMENDASI:** Sebelum eksekusi final, cek sumber yang lebih lengkap:
-- Google Search Console lama → **Coverage report** (menu "Pages" / halaman yang pernah diindex) — ini sumber PALING akurat untuk semua URL yang pernah dikenal Google, lebih lengkap dari sekadar `site:` search.
+- Google Search Console lama → **Coverage report** (menu "Pages" / halaman yang pernah diindex) — ini sumber PALING akurat untuk semua URL yang pernah dikenal Google, lebih lengkap dari sekadar `site:` search. **Dikonfirmasi Arseno properti GSC ini sudah ada dari era WordPress — cek laporan ini dulu sebelum eksekusi redirect final.**
 - Kalau masih ada akses ke backup/database WordPress lama → export semua permalink post/page.
 - Google Analytics lama (kalau ada) → laporan halaman dengan traffic historis tertinggi.
 
