@@ -66,9 +66,22 @@ Karena domain sudah di Cloudflare, pakai **Cloudflare Redirect Rules** (gratis, 
 - **Google Analytics/Search Console property lama**: pastikan verifikasi properti (meta tag/DNS TXT record) tidak hilang saat migrasi DNS ke Cloudflare — kalau verifikasi berbasis DNS TXT record, perlu dipindahkan juga ke Cloudflare DNS.
 - **Timeline realistis**: reindex penuh oleh Google biasanya perlu **beberapa hari sampai beberapa minggu**, tergantung frekuensi crawl Googlebot ke domain ini. Request Indexing manual mempercepat untuk halaman prioritas, tapi tidak instan.
 
-## 5. Status Eksekusi
-- [ ] Redirect Rules Cloudflare dibuat untuk semua mapping di atas
-- [ ] Verifikasi tiap redirect dengan `curl -I` (301 + location benar)
-- [ ] Sitemap baru disubmit ke GSC
-- [ ] Request Indexing manual untuk halaman prioritas
-- [ ] Cek ulang Coverage report GSC setelah 1-2 minggu untuk validasi
+## 6. Status Akses Google Search Console API (2026-09-07)
+- ✅ **Jarvis sekarang punya akses langsung ke GSC API** untuk `sc-domain:analyset.com` (OAuth setup selesai, scope `webmasters`).
+- Script: `/opt/data/scripts/gsc/gsc_api.py` (jalankan via `/opt/data/.venv_gws/bin/python3`). Command: `sites`, `sitemaps list/submit/get/delete`, `inspect --url <url>`, `search-analytics`.
+- Token: `/opt/data/.hermes/gsc_token.json`. Setup ulang/re-auth via `/opt/data/scripts/gsc/setup_gsc.py`.
+
+### Temuan URL Inspection (2026-09-07, sebelum propagasi DNS selesai)
+| URL | Status |
+|---|---|
+| `/` | Submitted and indexed (last crawl 28 Agustus 2026 — kemungkinan versi WordPress lama, perlu re-index setelah propagasi) |
+| `/services`, `/about`, `/contact`, `/case-study`, `/blog` | URL is unknown to Google — belum pernah di-crawl |
+
+**Catatan:** Sitemap `sitemap-index.xml` dan `sitemap-0.xml` (Astro) SUDAH ter-submit ke GSC (07 Sep 2026, 0 error, 11 URL submitted, 0 indexed — masih baru). Sitemap WordPress lama (`page-sitemap.xml`, `post-sitemap.xml`, dll) masih tercatat tapi tidak perlu dihapus manual.
+
+**Insight tambahan:** Homepage sudah dapat backlink dari beberapa sumber akademik (springer.com, proquest.com, rua.ua.es) — kemungkinan sitasi riset. Penting dijaga agar redirect tidak memutus otoritas domain ini.
+
+### Langkah Selanjutnya (setelah propagasi DNS Cloudflare selesai — dipantau cron job `cb47db1a1334`)
+1. Request Indexing via `gsc_api.py inspect` lalu request index untuk: `/`, `/services`, `/about`, `/contact`, `/case-study`, `/blog`, + 3 artikel blog individual.
+2. Setup Cloudflare Redirect Rules untuk 13 mapping URL (lihat Section 1).
+3. Pantau ulang status index beberapa hari kemudian.
