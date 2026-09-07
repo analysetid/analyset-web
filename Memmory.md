@@ -24,7 +24,8 @@ Web application untuk **Analyset** (perusahaan konsultan data science, spesialis
 - Deploy command: `wrangler pages deploy dist --project-name analyset`
 - Cloudflare Account ID: 25855b63b9daf7c14203a15c76d65844
 - Token: CLOUDFLARE_API_TOKEN di /opt/data/.env
-- Domain custom `analyset.com` BELUM dipasang (butuh tambah zone + ganti nameserver di Domainesia)
+- Domain custom `analyset.com` SUDAH LIVE (dipasang manual oleh Arseno, dikonfirmasi 2026-09-06) — mengarah ke situs Astro baru, menggantikan WordPress lama.
+- ⚠️ Ditemukan 2026-09-06: URL lama WordPress (`/home/`, `/shop/`, `/insight/`, `/articles/`, `/author/...`, dll) saat ini return HTTP 200 dengan konten HOMEPAGE (soft-404 / SPA fallback) alih-alih 404 asli atau redirect 301 — berisiko SEO (duplicate content / soft-404 di Google). Perlu 301 redirect resmi via Cloudflare, lihat brainstorm/migrasi-seo-wordpress-ke-astro.md.
 
 ## Isi Folder
 - `src/` — source code (pages, layouts, components, content, data, styles)
