@@ -42,7 +42,7 @@ Pada akhirnya, AI membebaskan auditor dari pekerjaan berulang supaya mereka bisa
 
 ### Ingin Menerapkan AI di Proses Audit atau Keuangan Perusahaan Anda?
 
-Analyset membantu korporat menengah membangun solusi data analytics dan automasi, termasuk deteksi anomali untuk audit dan keuangan.
+Analyset membantu korporat membangun solusi data analytics dan automasi, termasuk deteksi anomali untuk audit dan keuangan.
 
 [**Konsultasi Gratis via WhatsApp →**](https://wa.me/6281363663754)
 

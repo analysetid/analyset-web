@@ -40,4 +40,4 @@ Otomatisasi bukan berarti melepas kendali penuh ke sistem. Desain yang baik just
 
 ## Kesimpulan
 
-Rekonsiliasi keuangan adalah kandidat ideal untuk otomatisasi karena sifatnya yang terstruktur dan berulang. Dengan merancang alur kerja yang tepat, korporat menengah dapat menghemat waktu secara signifikan, menurunkan risiko error, dan mengalihkan tim finance ke pekerjaan yang lebih bernilai strategis.
+Rekonsiliasi keuangan adalah kandidat ideal untuk otomatisasi karena sifatnya yang terstruktur dan berulang. Dengan merancang alur kerja yang tepat, korporat dapat menghemat waktu secara signifikan, menurunkan risiko error, dan mengalihkan tim finance ke pekerjaan yang lebih bernilai strategis.

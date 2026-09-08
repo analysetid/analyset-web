@@ -42,12 +42,12 @@ Hambatan yang sebenarnya sering bukan teknologi. Manajemen yang terbiasa dengan 
 
 ## Penutup
 
-Data analytics tidak menyingkirkan tim finance. Sebaliknya, pekerjaan berulang yang membosankan diambil alih sistem, dan orang-orangnya naik ke pekerjaan yang lebih menarik: menganalisis, menafsirkan, dan memberi rekomendasi. Bagi korporat menengah, ini bukan proyek teknologi raksasa. Ini perbaikan bertahap yang dimulai dari satu proses yang paling menyakitkan.
+Data analytics tidak menyingkirkan tim finance. Sebaliknya, pekerjaan berulang yang membosankan diambil alih sistem, dan orang-orangnya naik ke pekerjaan yang lebih menarik: menganalisis, menafsirkan, dan memberi rekomendasi. Bagi korporat, ini bukan proyek teknologi raksasa. Ini perbaikan bertahap yang dimulai dari satu proses yang paling menyakitkan.
 
 ---
 
 ### Ingin Menerapkan Data Analytics di Tim Finance Anda?
 
-Analyset membantu korporat menengah membangun solusi data analytics dan otomatisasi untuk keuangan dan akuntansi.
+Analyset membantu korporat membangun solusi data analytics dan otomatisasi untuk keuangan dan akuntansi.
 
 [**Konsultasi Gratis via WhatsApp →**](https://wa.me/6281363663754)
