@@ -5,6 +5,7 @@ import '@fontsource/montserrat/600.css';
 import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -63,13 +64,23 @@ const organizationSchema = {
     <link rel="shortcut icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    <ClientRouter />
+
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-40ELCZH5Y3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-40ELCZH5Y3');
+      gtag('config', 'G-40ELCZH5Y3', { send_page_view: false });
+      // Fire pageview on initial load AND every client-side view-transition navigation
+      document.addEventListener('astro:page-load', () => {
+        gtag('event', 'page_view', {
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page_title: document.title,
+        });
+      });
     </script>
 
     <script

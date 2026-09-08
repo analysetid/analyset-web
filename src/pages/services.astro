@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CtaSection from '../components/CtaSection.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
+import HeroBubbles from '../components/HeroBubbles.astro';
 import { services } from '../data/services';
 
 const [featured, ...rest] = services;
@@ -26,6 +27,7 @@ const breadcrumbSchema = {
 
   <section class="relative overflow-hidden bg-gradient-to-b from-sky-50 to-white py-10 md:py-14">
     <div class="absolute inset-0 bg-dots" aria-hidden="true"></div>
+    <HeroBubbles />
     <div class="relative max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center max-w-2xl mx-auto">
         <span class="inline-flex items-center gap-2 rounded-full border border-sky-300 bg-sky-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
