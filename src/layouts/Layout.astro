@@ -84,18 +84,22 @@ const organizationSchema = {
     </script>
 
     <script>
-      // View Transitions don't reset scroll position by default. Scroll to
-      // top on forward navigation, but leave back/forward browser
-      // navigation and same-page anchor links (#section) alone.
+      // View Transitions + the History API can trigger the browser's native
+      // scroll restoration, which fights with a manual scrollTo. Take full
+      // manual control: disable native restoration, track back/forward via
+      // popstate, and force-scroll to top on every other navigation.
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      let isPopNavigation = false;
+      window.addEventListener('popstate', () => {
+        isPopNavigation = true;
+      });
       document.addEventListener('astro:after-swap', () => {
-        const nav = window.navigation;
-        // @ts-ignore - NavigationActivation is not in older TS DOM libs
-        const navType = nav?.activation?.navigationType;
-        const isTraversal = navType === 'traverse' || navType === 'reload';
-        const hasHash = window.location.hash.length > 0;
-        if (!isTraversal && !hasHash) {
+        if (!isPopNavigation && !window.location.hash) {
           window.scrollTo(0, 0);
         }
+        isPopNavigation = false;
       });
     </script>
 
