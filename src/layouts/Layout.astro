@@ -83,6 +83,22 @@ const organizationSchema = {
       });
     </script>
 
+    <script>
+      // View Transitions don't reset scroll position by default. Scroll to
+      // top on forward navigation, but leave back/forward browser
+      // navigation and same-page anchor links (#section) alone.
+      document.addEventListener('astro:after-swap', () => {
+        const nav = window.navigation;
+        // @ts-ignore - NavigationActivation is not in older TS DOM libs
+        const navType = nav?.activation?.navigationType;
+        const isTraversal = navType === 'traverse' || navType === 'reload';
+        const hasHash = window.location.hash.length > 0;
+        if (!isTraversal && !hasHash) {
+          window.scrollTo(0, 0);
+        }
+      });
+    </script>
+
     <script
       type="application/ld+json"
       set:html={JSON.stringify(organizationSchema)}
