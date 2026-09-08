@@ -88,6 +88,10 @@ const organizationSchema = {
       // scroll restoration, which fights with a manual scrollTo. Take full
       // manual control: disable native restoration, track back/forward via
       // popstate, and force-scroll to top on every other navigation.
+      // IMPORTANT: html has `scroll-behavior: smooth` globally — scrollTo()
+      // without an explicit instant behavior inherits that smooth animation,
+      // which the view-transition swap can interrupt/cancel mid-flight,
+      // silently leaving the scroll position unchanged. Force `instant`.
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
@@ -97,7 +101,14 @@ const organizationSchema = {
       });
       document.addEventListener('astro:after-swap', () => {
         if (!isPopNavigation && !window.location.hash) {
-          window.scrollTo(0, 0);
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        }
+      });
+      // Fallback: re-assert scroll position after the transition fully
+      // settles, in case something (image load reflow, etc.) shifted it.
+      document.addEventListener('astro:page-load', () => {
+        if (!isPopNavigation && !window.location.hash) {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         }
         isPopNavigation = false;
       });
