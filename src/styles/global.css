@@ -10,6 +10,11 @@
     @apply font-sans text-neutral-dark bg-white antialiased;
   }
 
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   ::selection {
     @apply bg-sky-200/60 text-neutral-dark;
   }
