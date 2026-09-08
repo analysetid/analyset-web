@@ -5,7 +5,7 @@ import '@fontsource/montserrat/600.css';
 import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
 import '../styles/global.css';
-import { ClientRouter, fade } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -84,33 +84,26 @@ const organizationSchema = {
     </script>
 
     <script>
-      // View Transitions + the History API can trigger the browser's native
-      // scroll restoration, which fights with a manual scrollTo. Take full
-      // manual control: disable native restoration, track back/forward via
-      // popstate, and force-scroll to top on every other navigation.
-      // IMPORTANT: html has `scroll-behavior: smooth` globally — scrollTo()
-      // without an explicit instant behavior inherits that smooth animation,
-      // which the view-transition swap can interrupt/cancel mid-flight,
-      // silently leaving the scroll position unchanged. Force `instant`.
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-      let isPopNavigation = false;
-      window.addEventListener('popstate', () => {
-        isPopNavigation = true;
-      });
-      document.addEventListener('astro:after-swap', () => {
-        if (!isPopNavigation && !window.location.hash) {
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-        }
-      });
-      // Fallback: re-assert scroll position after the transition fully
-      // settles, in case something (image load reflow, etc.) shifted it.
-      document.addEventListener('astro:page-load', () => {
-        if (!isPopNavigation && !window.location.hash) {
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-        }
-        isPopNavigation = false;
+      // Reset scroll ke atas saat navigasi lewat ClientRouter.
+      //
+      // Dipasang di `astro:before-swap` (bukan after-swap/page-load): event ini
+      // fire DI DALAM callback view transition, tepat sebelum DOM lama ditukar.
+      // Jadi saat browser menangkap snapshot "new", scroll sudah di 0 dan
+      // geometri elemen tidak perlu dianimasikan dari offset scroll lama.
+      //
+      // `event.navigationType` ('push' | 'replace' | 'traverse') adalah sinyal
+      // resmi Astro untuk membedakan navigasi biasa dari back/forward, jadi
+      // tidak perlu lagi melacak popstate atau mengutak-atik
+      // history.scrollRestoration sendiri (ClientRouter sudah mengurusnya).
+      //
+      // `behavior: 'instant'` wajib eksplisit karena html punya
+      // `scroll-behavior: smooth` global — tanpa itu scroll jadi animasi.
+      document.addEventListener('astro:before-swap', (event) => {
+        // Back/forward: biarkan Astro me-restore posisi scroll dari history state.
+        if (event.navigationType === 'traverse') return;
+        // Link ke anchor (#section): biarkan browser lompat ke section itu.
+        if (event.to.hash) return;
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       });
     </script>
 
@@ -123,7 +116,7 @@ const organizationSchema = {
   </head>
   <body class="flex min-h-screen flex-col">
     <Navbar transition:persist />
-    <main class="flex-1" transition:animate={fade({ duration: '0.12s' })}>
+    <main class="flex-1">
       <slot />
     </main>
     <Footer transition:persist />

@@ -253,11 +253,22 @@
 }
 
 /* Page transition (Astro View Transitions).
-   Navbar/Footer/WhatsApp button use transition:persist in Layout.astro so
-   they never re-animate; only <main> cross-fades via the `fade()` built-in
-   animation (see Layout.astro). This keeps navigation feeling smooth instead
-   of a jarring full-page flash. */
+
+   Cross-fade dilakukan di snapshot `root`, BUKAN lewat transition:animate di
+   <main>. Ini disengaja: `transition:animate` memberi elemen sasarannya sebuah
+   `view-transition-name`, dan elemen bernama ditangkap UTUH beserta bagian yang
+   ada di luar viewport, lalu ::view-transition-group-nya dianimasikan dari
+   geometri lama ke geometri baru. Karena <main> setinggi seluruh halaman,
+   posisi lamanya = -scrollY relatif viewport, sehingga halaman baru tampak
+   dirender pada offset scroll lama selama transisi berlangsung.
+
+   Snapshot `root` selalu seukuran viewport, jadi tidak punya masalah ini. */
 @layer base {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.12s;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-group(*),
     ::view-transition-old(*),
