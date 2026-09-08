@@ -252,38 +252,16 @@
   }
 }
 
-/* Page transition (Astro View Transitions) — subtle fade, professional feel */
+/* Page transition (Astro View Transitions).
+   Navbar/Footer/WhatsApp button use transition:persist in Layout.astro so
+   they never re-animate; only <main> cross-fades via the `fade()` built-in
+   animation (see Layout.astro). This keeps navigation feeling smooth instead
+   of a jarring full-page flash. */
 @layer base {
-  ::view-transition-old(root) {
-    animation: analyset-fade-out 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-  ::view-transition-new(root) {
-    animation: analyset-fade-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  @keyframes analyset-fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes analyset-fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
       animation: none !important;
     }
   }

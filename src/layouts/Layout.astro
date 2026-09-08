@@ -5,7 +5,7 @@ import '@fontsource/montserrat/600.css';
 import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -91,16 +91,17 @@ const organizationSchema = {
     <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">
-    <Navbar />
-    <main class="flex-1">
+    <Navbar transition:persist />
+    <main class="flex-1" transition:animate={fade({ duration: '0.35s' })}>
       <slot />
     </main>
-    <Footer />
+    <Footer transition:persist />
     <a
       href="https://wa.me/6281363663754"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat WhatsApp Analyset"
+      transition:persist
       class="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg shadow-whatsapp/40 transition-transform duration-300 hover:scale-110"
     >
       <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
