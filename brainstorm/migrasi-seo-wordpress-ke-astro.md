@@ -82,9 +82,20 @@ Karena domain sudah di Cloudflare, pakai **Cloudflare Redirect Rules** (gratis, 
 **Insight tambahan:** Homepage sudah dapat backlink dari beberapa sumber akademik (springer.com, proquest.com, rua.ua.es) — kemungkinan sitasi riset. Penting dijaga agar redirect tidak memutus otoritas domain ini.
 
 ### Langkah Selanjutnya (setelah propagasi DNS Cloudflare selesai — dipantau cron job `cb47db1a1334`)
-1. Request Indexing via `gsc_api.py inspect` lalu request index untuk: `/`, `/services`, `/about`, `/contact`, `/case-study`, `/blog`, + 3 artikel blog individual.
+1. ~~Request Indexing via `gsc_api.py inspect` lalu request index untuk: `/`, `/services`, `/about`, `/contact`, `/case-study`, `/blog`, + 3 artikel blog individual.~~ — **Tidak bisa via API**: GSC API (`webmasters` scope) tidak punya endpoint Request Indexing, fitur itu hanya ada di UI Search Console. Perlu manual klik di dashboard kalau mau mempercepat crawl.
 2. ~~Setup Cloudflare Redirect Rules untuk 13 mapping URL~~ — **SELESAI 2026-09-07**, lihat Section 7.
 3. Pantau ulang status index beberapa hari kemudian.
+
+## 8. Verifikasi Redirect & Resubmit Sitemap — SELESAI (2026-09-08)
+- **DNS propagasi Cloudflare sudah tuntas** — `analyset.com` resolve ke IP Cloudflare (104.21.81.66 / 172.67.140.25) di public resolver maupun dari host ini; `curl -I https://analyset.com/` mengembalikan header `server: cloudflare`.
+- **Verifikasi ulang 13 redirect URL lama** (`curl -I` tiap URL) — semua benar:
+  - 12/13 URL return `301` dengan `location` sesuai mapping Section 1.
+  - `/about/` return `200` dengan konten Astro yang benar ("Tentang Analyset") — bukan soft-404, jadi tidak perlu redirect tambahan (Astro sudah serve halaman ini langsung tanpa trailing-slash issue).
+- **Resubmit sitemap**: `https://analyset.com/sitemap-index.xml` disubmit ulang via `gsc_api.py sitemaps submit` — `lastSubmitted` update ke `2026-09-08T02:49:31Z`, 0 error/warning, 11 URL.
+- **Status index terkini (2026-09-08)**:
+  - `/` → **Submitted and indexed** ✅ (last crawl 7 Sep 2026)
+  - `/services`, `/about`, `/blog` → masih **"URL is unknown to Google"**, belum di-crawl. Request Indexing manual di dashboard GSC direkomendasikan untuk mempercepat, karena API tidak mendukung ini (lihat catatan di Section 7 Langkah Selanjutnya poin 1).
+- Task 1 & 2 dari rencana awal (redirect rules + resubmit sitemap) **selesai dieksekusi otomatis oleh Jarvis** atas instruksi Arseno tanpa perlu approval tambahan.
 
 ## 7. Deploy Redirect 301 — SELESAI (2026-09-07)
 - File `public/_redirects` (format Cloudflare Pages) berisi 13 rule 301, dibuat & di-push ke `development` lalu merged ke `main`.
