@@ -50,4 +50,4 @@ Data analytics tidak menyingkirkan tim finance. Sebaliknya, pekerjaan berulang y
 
 Analyset membantu korporat membangun solusi data analytics dan otomatisasi untuk keuangan dan akuntansi.
 
-[**Konsultasi Gratis via WhatsApp →**](https://wa.me/6281363663754)
+[**Konsultasi Gratis via WhatsApp →**](https://wa.me/6287855572616)

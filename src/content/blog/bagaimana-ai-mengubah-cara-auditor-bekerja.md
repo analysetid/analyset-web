@@ -44,7 +44,7 @@ Pada akhirnya, AI membebaskan auditor dari pekerjaan berulang supaya mereka bisa
 
 Analyset membantu korporat membangun solusi data analytics dan automasi, termasuk deteksi anomali untuk audit dan keuangan.
 
-[**Konsultasi Gratis via WhatsApp →**](https://wa.me/6281363663754)
+[**Konsultasi Gratis via WhatsApp →**](https://wa.me/6287855572616)
 
 ---
 
