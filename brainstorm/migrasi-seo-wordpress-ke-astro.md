@@ -86,6 +86,16 @@ Karena domain sudah di Cloudflare, pakai **Cloudflare Redirect Rules** (gratis, 
 2. ~~Setup Cloudflare Redirect Rules untuk 13 mapping URL~~ — **SELESAI 2026-09-07**, lihat Section 7.
 3. Pantau ulang status index beberapa hari kemudian.
 
+## 9. Audit Ulang & Fix Gap — SELESAI (2026-09-19)
+- **Konteks:** Diskusi digital marketing dengan Arseno, GA4 & GSC token expired → di-reauth ulang (lihat catatan re-auth di skill google-analytics/google-search-console).
+- **Temuan GSC search-analytics 90 hari:** hampir semua traffic organic adalah brand-typo query; hanya 1 keyword topikal ("perbedaan data base dan data warehouse") dapat impression tapi posisi #25. Total 3 klik / 209 impresi dalam 90 hari.
+- **Gap ditemukan:** variant URL `/2025/07/06/data-warehouse-vs-database-biasa-perbedaan-dan-kapan-harus-menggunakannya/` (tanpa kata "fungsi") **belum ada** di `public/_redirects` — masih return HTTP 200 dengan homepage content (soft-404 tersisa dari migrasi awal, lolos dari cross-check 2026-09-07/08).
+- **Fix:** ditambahkan 1 baris redirect 301 ke `/blog/` di `public/_redirects`, commit `9f5dcb8`, build sukses, push development→main, deploy via `wrangler pages deploy` ke project `analyset` — live di `https://ca7f37cd.analyset.pages.dev` & production `analyset.com`.
+- **Verifikasi final — SEMUA 14 URL usang sekarang konsisten 301** (dicek ulang via curl -I satu-satu): `/home/`, `/contact`, `/insight/`, `/articles/`, `/shop/`, `/product-category/analyset-mab/`, `/product/accurate-analytics/`, `/author/krisanputih/`, `/under_construction-analyset/`, `/study-case-analyset/`, `/demo-analyset-tools/`, 2 variant URL data-warehouse.
+- **Subdomain `niel.analyset.com`** — masih muncul di GSC search-analytics (6 impression) tapi TIDAK ADA DNS record apapun di Cloudflare zone `analyset.com` untuk subdomain ini (return HTTP 530 no-origin). Kemungkinan subdomain lama yang sudah dihapus tapi masih di-crawl Google dari cache lama — tidak ada aksi teknis yang bisa dilakukan selain menunggu Google drop dari index secara alami (tidak resolve ke mana pun, tidak bisa di-redirect).
+- Sitemap `sitemap-index.xml` resubmit ulang 2026-09-19, 0 error/warning, 11 URL.
+- **Belum dilakukan (next step usulan ke Arseno):** riset keyword topikal untuk jasa inti (audit internal, financial data analytics, anomaly detection ML, BEI/OJK compliance) — saat ini 0 keyword non-brand yang relevan ranking. Rencana konten baru/optimasi artikel existing perlu dibahas terpisah.
+
 ## 8. Verifikasi Redirect & Resubmit Sitemap — SELESAI (2026-09-08)
 - **DNS propagasi Cloudflare sudah tuntas** — `analyset.com` resolve ke IP Cloudflare (104.21.81.66 / 172.67.140.25) di public resolver maupun dari host ini; `curl -I https://analyset.com/` mengembalikan header `server: cloudflare`.
 - **Verifikasi ulang 13 redirect URL lama** (`curl -I` tiap URL) — semua benar:
