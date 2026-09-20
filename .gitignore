@@ -14,3 +14,7 @@ pnpm-debug.log*
 .DS_Store
 .secrets/
 *.env
+
+# Jarvis local-only memory files (per-folder AI context) — must never be pushed
+MEMORY.md
+HISTORY.md
